@@ -26,6 +26,7 @@ exports.createCourse = async (req, res) => {
       category,
       tags,
       thumbnail,
+      isPublished,
     } = req.body;
     //tạo slug và tránh trùng
     let slug = slugify(title);
@@ -45,6 +46,7 @@ exports.createCourse = async (req, res) => {
       tags,
       thumbnail,
       instructor: req.user._id,
+      isPublished,
     });
 
     res.status(201).json(course);
