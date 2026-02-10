@@ -60,6 +60,19 @@ exports.deleteLesson = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+// lấy danh sách bài học của chương
+exports.getLessonsByChapter = async (req, res) => {
+  try {
+    const lessons = await Lesson.find({
+      chapterId: req.params.chapterId,
+    }).sort("order");
+
+    res.json(lessons);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 //lấy chi tiết bài học
 exports.getLessonById = async (req, res) => {
   try {
