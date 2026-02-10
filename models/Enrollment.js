@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const enrollmentSchema = new mongoose.Schema({
   enrollmentId: {
-    type: Number,
+    type: String,
     required: true,
     unique: true,
-    default: () => Date.now(),
+    default: () => `EN-${Date.now()}`,
   },
   studentId: { type: mongoose.Schema.Types.ObjectId, ref: "Student" },
   classId: { type: mongoose.Schema.Types.ObjectId, ref: "Class" },
@@ -13,8 +13,8 @@ const enrollmentSchema = new mongoose.Schema({
     type: String,
     enum: ["Active", "Completed", "Dropped", "Reserved"],
     default: "Active",
-  }, //tình trạng học
-  feeAmount: Number, //học phí thực tế
+  },
+  feeAmount: Number,
   paymentStatus: {
     type: String,
     enum: ["unpaid", "paid", "partial"],

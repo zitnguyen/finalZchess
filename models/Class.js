@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const classSchema = new mongoose.Schema(
   {
     classId: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
+      default: () => `CL-${Date.now()}`,
     },
 
     className: {
